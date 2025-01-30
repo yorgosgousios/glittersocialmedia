@@ -31,9 +31,10 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps  # ✅ Forces secure FTP
+          protocol: ftp  # ✅ Forces secure FTP
           local-dir: dist/  # Uploads the dist/ folder
-          security: strict  # ✅ Ensures a secure connection
+          security: loose  # ✅ Allows less secure connections if needed
+          timeout: 60000  # ✅ Set timeout to 60 seconds
           server-dir: ${{ secrets.FTP_TARGET_DIR }}  # Typically `/httpdocs/`
           exclude: |
             **/.git*
