@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps  # ✅ Forces secure FTP
           local-dir: dist/  # Uploads the dist/ folder
-          passive: true
+          security: strict  # ✅ Ensures a secure connection
           server-dir: ${{ secrets.FTP_TARGET_DIR }}  # Typically `/httpdocs/`
           exclude: |
             **/.git*
