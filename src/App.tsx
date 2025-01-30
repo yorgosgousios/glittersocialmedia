@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <img src="/glitter.png" />
+      <img className="image" src="/glitter.png" />
     </>
   );
 }
