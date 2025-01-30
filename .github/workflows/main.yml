@@ -31,6 +31,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps  # ✅ Forces secure FTP
           local-dir: dist/  # Uploads the dist/ folder
           passive: true
           server-dir: ${{ secrets.FTP_TARGET_DIR }}  # Typically `/httpdocs/`
