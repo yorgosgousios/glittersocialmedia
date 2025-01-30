@@ -1,0 +1,40 @@
+name: Deploy Vite to FTP (Papaki)
+
+on:
+  push:
+    branches:
+      - main  # Change this if your main branch has a different name
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18  # Change this if needed
+          cache: 'yarn'  # Use 'npm' if using npm instead
+
+      - name: Install dependencies
+        run: yarn install  # Change to npm install if using npm
+
+      - name: Build project
+        run: yarn build  # Change to npm run build if using npm
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/  # Uploads the dist/ folder
+          server-dir: ${{ secrets.FTP_TARGET_DIR }}  # Typically `/httpdocs/`
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/src/**
