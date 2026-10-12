@@ -1,10 +1,9 @@
 name: Deploy
 
-# Deploys the theme folder to the Papaki hosting over FTPS after CI passes on main.
-# Disabled until the repo variable DEPLOY_ENABLED is set to "true" — so pushes never
-# touch the live "under construction" page until WordPress is installed on the host.
+# Deploys the theme folder to the Papaki hosting over FTPS (lftp) after CI passes on main.
+# Runs only while the repo variable DEPLOY_ENABLED is "true". Uploads theme/ only.
 # Setup (repo → Settings → Secrets and variables → Actions):
-#   secrets:   FTP_HOST, FTP_USERNAME, FTP_PASSWORD (already set in the repo),
+#   secrets:   FTP_HOST (linux72.papaki.gr — the server name, not the domain), FTP_USERNAME, FTP_PASSWORD,
 #              FTP_THEME_DIR  e.g. /httpdocs/wp-content/themes/glitter/   (new — note the trailing slash)
 #   variables: DEPLOY_ENABLED=true, PRODUCTION_URL=https://glittersocialmedia.gr, FTP_PROTOCOL (optional: ftps|ftp)
 # The old FTP_TARGET_DIR secret (site root) is intentionally NOT used.
@@ -37,19 +36,26 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
-      - name: Upload theme (FTPS)
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}  # set FTP_PROTOCOL=ftp if the host has no FTPS
-          local-dir: theme/
-          server-dir: ${{ secrets.FTP_THEME_DIR }}
-          exclude: |
-            **/.*
-            **/.*/**
-          timeout: 120000
+      - name: Install lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      # lftp instead of a Node FTP client: Plesk's FTPS requires TLS session reuse on the
+      # data connection, which lftp supports (basic-ftp fails with ECONNRESET).
+      # The password is read from LFTP_PASSWORD (--env-password), so any characters are safe.
+      - name: Upload theme (FTPS, only changed files)
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_THEME_DIR: ${{ secrets.FTP_THEME_DIR }}
+          FTP_PROTOCOL: ${{ vars.FTP_PROTOCOL || 'ftps' }}  # set FTP_PROTOCOL=ftp only if the host has no FTPS
+        run: |
+          if [ "$FTP_PROTOCOL" = "ftp" ]; then TLS="set ftp:ssl-allow false;"; else TLS="set ftp:ssl-force true; set ftp:ssl-protect-data true; set ssl:verify-certificate true;"; fi
+          lftp -c "$TLS
+            set net:max-retries 2; set net:timeout 30; set net:reconnect-interval-base 5;
+            open --env-password -u \"$FTP_USERNAME\" ftp://$FTP_HOST;
+            mirror --reverse --delete --only-newer --no-perms --parallel=4 --verbose \
+              --exclude-glob .* theme/ $FTP_THEME_DIR"
 
       - name: Health check
         if: vars.PRODUCTION_URL != ''

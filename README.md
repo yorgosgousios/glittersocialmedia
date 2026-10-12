@@ -63,6 +63,6 @@ make translations   # compile el.mo + el.l10n.php
 ## CI/CD (GitHub Actions)
 
 - **CI** (`ci.yml`) runs on every push and pull request. It does a PHP syntax check on 8.1 and 8.3, runs PHPCS, ESLint and Stylelint, and runs a fresh Docker install with seeding and the smoke test. Once all of that passes, it builds `glitter-theme.zip` as an artifact.
-- **Deploy** (`deploy.yml`) runs after CI passes on `main`, or manually. It uploads `theme/` over FTPS to the Papaki hosting, then checks that the homepage returns 200. It stays off until `DEPLOY_ENABLED=true`. Setup notes are at the top of the file.
+- **Deploy** (`deploy.yml`) runs after CI passes on `main`, or manually. It uploads `theme/` over FTPS with lftp (only changed files) to the Papaki hosting, then checks that the homepage returns 200. See INFRASTRUCTURE.txt for the full setup and the reasoning behind it. It stays off until `DEPLOY_ENABLED=true`. Setup notes are at the top of the file.
 
 Only the theme is deployed. WordPress core, Polylang, uploads and the database live on the host.
