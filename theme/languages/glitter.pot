@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-12T17:52:03+00:00\n"
+"POT-Creation-Date: 2026-10-12T18:55:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: glitter\n"
@@ -160,6 +160,43 @@ msgstr ""
 
 #: header.php:49
 msgid "Mobile"
+msgstr ""
+
+#: inc/admin-setup.php:12
+#: inc/admin-setup.php:55
+msgid "Glitter setup"
+msgstr ""
+
+#: inc/admin-setup.php:20
+msgid "Sorry, you are not allowed to do that."
+msgstr ""
+
+#: inc/admin-setup.php:48
+msgid "Polylang active"
+msgstr ""
+
+#: inc/admin-setup.php:49
+msgid "Languages: Ελληνικά + English"
+msgstr ""
+
+#: inc/admin-setup.php:50
+msgid "Static front page"
+msgstr ""
+
+#: inc/admin-setup.php:51
+msgid "Pretty permalinks"
+msgstr ""
+
+#: inc/admin-setup.php:56
+msgid "Creates the Greek and English languages, the bilingual pages (Home, About, Contact, Journal, Privacy), one menu per language and the permalink settings. Existing pages and menus are kept, so it is safe to run again."
+msgstr ""
+
+#: inc/admin-setup.php:78
+msgid "Install and activate the Polylang plugin first."
+msgstr ""
+
+#: inc/admin-setup.php:83
+msgid "Run setup"
 msgstr ""
 
 #: inc/contact-form.php:16

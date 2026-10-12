@@ -11,7 +11,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-12T17:52:03+00:00\n"
+"POT-Creation-Date: 2026-10-12T18:55:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: glitter\n"
@@ -163,6 +163,43 @@ msgstr "Κλείσιμο μενού"
 #: header.php:49
 msgid "Mobile"
 msgstr "Κινητό"
+
+#: inc/admin-setup.php:12
+#: inc/admin-setup.php:55
+msgid "Glitter setup"
+msgstr "Ρύθμιση Glitter"
+
+#: inc/admin-setup.php:20
+msgid "Sorry, you are not allowed to do that."
+msgstr "Δεν επιτρέπεται αυτή η ενέργεια."
+
+#: inc/admin-setup.php:48
+msgid "Polylang active"
+msgstr "Το Polylang είναι ενεργό"
+
+#: inc/admin-setup.php:49
+msgid "Languages: Ελληνικά + English"
+msgstr "Γλώσσες: Ελληνικά + English"
+
+#: inc/admin-setup.php:50
+msgid "Static front page"
+msgstr "Στατική αρχική σελίδα"
+
+#: inc/admin-setup.php:51
+msgid "Pretty permalinks"
+msgstr "Φιλικοί σύνδεσμοι (permalinks)"
+
+#: inc/admin-setup.php:56
+msgid "Creates the Greek and English languages, the bilingual pages (Home, About, Contact, Journal, Privacy), one menu per language and the permalink settings. Existing pages and menus are kept, so it is safe to run again."
+msgstr "Δημιουργεί τις γλώσσες Ελληνικά και English, τις δίγλωσσες σελίδες (Αρχική, Ποιοι είμαστε, Επικοινωνία, Journal, Απόρρητο), ένα μενού ανά γλώσσα και τις ρυθμίσεις permalinks. Οι υπάρχουσες σελίδες και τα μενού διατηρούνται, οπότε μπορεί να εκτελεστεί ξανά με ασφάλεια."
+
+#: inc/admin-setup.php:78
+msgid "Install and activate the Polylang plugin first."
+msgstr "Εγκατάστησε και ενεργοποίησε πρώτα το πρόσθετο Polylang."
+
+#: inc/admin-setup.php:83
+msgid "Run setup"
+msgstr "Εκτέλεση ρύθμισης"
 
 #: inc/contact-form.php:16
 msgid "Up to €500 / month"
