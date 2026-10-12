@@ -2,8 +2,6 @@
 
 WordPress site for Glitter Social Media (glittersocialmedia.gr). It uses a custom classic theme with no page builder, and is bilingual: Greek is the default at `/`, English is at `/en/`, using Polylang.
 
-> The earlier Vite "under construction" page that lived in this repo is still in git history (up to `4caccbe`).
-
 ## Local setup
 
 Requires the shared Traefik proxy (`traefik_proxy` network, `*.local.dev`).

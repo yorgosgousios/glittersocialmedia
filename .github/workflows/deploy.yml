@@ -4,7 +4,7 @@ name: Deploy
 # Disabled until the repo variable DEPLOY_ENABLED is set to "true" — so pushes never
 # touch the live "under construction" page until WordPress is installed on the host.
 # Setup (repo → Settings → Secrets and variables → Actions):
-#   secrets:   FTP_HOST, FTP_USERNAME, FTP_PASSWORD (already exist from the old Vite deploy),
+#   secrets:   FTP_HOST, FTP_USERNAME, FTP_PASSWORD (already set in the repo),
 #              FTP_THEME_DIR  e.g. /httpdocs/wp-content/themes/glitter/   (new — note the trailing slash)
 #   variables: DEPLOY_ENABLED=true, PRODUCTION_URL=https://glittersocialmedia.gr, FTP_PROTOCOL (optional: ftps|ftp)
 # The old FTP_TARGET_DIR secret (site root) is intentionally NOT used.
