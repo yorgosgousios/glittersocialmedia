@@ -1,0 +1,590 @@
+# Copyright (C) 2026 
+# This file is distributed under the same license as the Glitter theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Glitter 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/glitter\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-12T17:52:03+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: glitter\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Glitter"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Custom theme for Glitter Social Media."
+msgstr ""
+
+#: 404.php:7
+msgid "This page lost its sparkle"
+msgstr ""
+
+#: 404.php:7
+msgid "It doesn’t exist or it has moved."
+msgstr ""
+
+#: 404.php:11
+msgid "Back home"
+msgstr ""
+
+#: archive-case_study.php:8
+#: inc/post-types.php:37
+msgid "Work"
+msgstr ""
+
+#: archive-case_study.php:9
+msgid "Selected projects"
+msgstr ""
+
+#: archive-case_study.php:10
+msgid "A few of the brands we’ve helped sparkle online."
+msgstr ""
+
+#: archive-case_study.php:27
+msgid "Case studies coming soon."
+msgstr ""
+
+#: archive-service.php:8
+#: inc/post-types.php:15
+msgid "Services"
+msgstr ""
+
+#: archive-service.php:9
+#: front-page.php:60
+msgid "What we do"
+msgstr ""
+
+#: archive-service.php:10
+msgid "Strategy, content and community for brands that want to stand out in the feed."
+msgstr ""
+
+#: archive-service.php:26
+msgid "Services coming soon."
+msgstr ""
+
+#: footer.php:7
+msgid "Say hi"
+msgstr ""
+
+#: footer.php:12
+#: inc/setup.php:33
+msgid "Footer"
+msgstr ""
+
+#: footer.php:30
+msgid "Strategies that sparkle."
+msgstr ""
+
+#: footer.php:47
+msgid "Back to top"
+msgstr ""
+
+#: front-page.php:14
+msgid "Social media agency"
+msgstr ""
+
+#: front-page.php:16
+msgid "Social media strategies that *sparkle*"
+msgstr ""
+
+#: front-page.php:23
+#: template-parts/cta.php:13
+msgid "Start a project"
+msgstr ""
+
+#: front-page.php:24
+msgid "See our work"
+msgstr ""
+
+#: front-page.php:43
+msgid "Hi, we’re Glitter"
+msgstr ""
+
+#: front-page.php:46
+msgid "Meet the team"
+msgstr ""
+
+#: front-page.php:61
+msgid "Everything your feed *needs*"
+msgstr ""
+
+#: front-page.php:62
+msgid "All services"
+msgstr ""
+
+#: front-page.php:84
+msgid "Selected work"
+msgstr ""
+
+#: front-page.php:85
+msgid "Brands we made *shine*"
+msgstr ""
+
+#: front-page.php:86
+#: inc/post-types.php:41
+#: single-service.php:39
+msgid "All projects"
+msgstr ""
+
+#: header.php:12
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:18
+#: inc/setup.php:32
+msgid "Primary"
+msgstr ""
+
+#: header.php:34
+#: template-contact.php:17
+#: template-parts/cta.php:9
+msgid "Let’s talk"
+msgstr ""
+
+#: header.php:35
+msgid "Open menu"
+msgstr ""
+
+#: header.php:45
+msgid "Close menu"
+msgstr ""
+
+#: header.php:49
+msgid "Mobile"
+msgstr ""
+
+#: inc/contact-form.php:16
+msgid "Up to €500 / month"
+msgstr ""
+
+#: inc/contact-form.php:17
+msgid "€500 – €1,000 / month"
+msgstr ""
+
+#: inc/contact-form.php:18
+msgid "€1,000 – €2,500 / month"
+msgstr ""
+
+#: inc/contact-form.php:19
+msgid "€2,500+ / month"
+msgstr ""
+
+#: inc/contact-form.php:20
+msgid "One-off project"
+msgstr ""
+
+#: inc/contact-form.php:21
+msgid "Not sure yet"
+msgstr ""
+
+#: inc/contact-form.php:28
+msgid "Not sure yet — help me choose"
+msgstr ""
+
+#: inc/contact-form.php:35
+msgid "Please fill in all required fields."
+msgstr ""
+
+#: inc/contact-form.php:36
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: inc/contact-form.php:37
+msgid "Too many messages from your connection. Please try again later or email us directly."
+msgstr ""
+
+#: inc/contact-form.php:38
+msgid "Your message could not be sent. Please try again or email us directly."
+msgstr ""
+
+#: inc/contact-form.php:39
+msgid "The form expired. Please try again."
+msgstr ""
+
+#: inc/customizer.php:11
+msgid "Contact email (also receives project briefs)"
+msgstr ""
+
+#: inc/customizer.php:12
+msgid "Phone"
+msgstr ""
+
+#: inc/customizer.php:13
+msgid "Address / city"
+msgstr ""
+
+#: inc/customizer.php:14
+#: inc/meta-boxes.php:24
+msgid "Instagram URL"
+msgstr ""
+
+#: inc/customizer.php:15
+msgid "TikTok URL"
+msgstr ""
+
+#: inc/customizer.php:16
+msgid "LinkedIn URL"
+msgstr ""
+
+#: inc/customizer.php:17
+msgid "Facebook URL"
+msgstr ""
+
+#: inc/customizer.php:18
+msgid "Clients strip on Home (one name per line)"
+msgstr ""
+
+#: inc/customizer.php:34
+msgid "Agency & social"
+msgstr ""
+
+#: inc/i18n.php:67
+msgid "Language"
+msgstr ""
+
+#: inc/meta-boxes.php:13
+msgid "What’s included (one per line)"
+msgstr ""
+
+#: inc/meta-boxes.php:16
+#: single-case_study.php:14
+msgid "Client"
+msgstr ""
+
+#: inc/meta-boxes.php:17
+msgid "Platforms (e.g. Instagram, TikTok)"
+msgstr ""
+
+#: inc/meta-boxes.php:18
+#: single-case_study.php:16
+msgid "Year"
+msgstr ""
+
+#: inc/meta-boxes.php:19
+msgid "Results, one per line as \"value | label\" (e.g. +240% | reach)"
+msgstr ""
+
+#: inc/meta-boxes.php:20
+msgid "Link (Instagram profile, campaign…)"
+msgstr ""
+
+#: inc/meta-boxes.php:23
+msgid "Role"
+msgstr ""
+
+#: inc/meta-boxes.php:27
+msgid "Role / company"
+msgstr ""
+
+#: inc/meta-boxes.php:41
+msgid "Details"
+msgstr ""
+
+#: inc/post-types.php:16
+#: single-service.php:11
+msgid "Service"
+msgstr ""
+
+#: inc/post-types.php:17
+msgid "Add new service"
+msgstr ""
+
+#: inc/post-types.php:18
+msgid "Edit service"
+msgstr ""
+
+#: inc/post-types.php:38
+msgid "Project"
+msgstr ""
+
+#: inc/post-types.php:39
+msgid "Add new project"
+msgstr ""
+
+#: inc/post-types.php:40
+msgid "Edit project"
+msgstr ""
+
+#: inc/post-types.php:69
+msgid "Team"
+msgstr ""
+
+#: inc/post-types.php:70
+msgid "Team member"
+msgstr ""
+
+#: inc/post-types.php:71
+msgid "Add team member"
+msgstr ""
+
+#: inc/post-types.php:72
+msgid "Photo"
+msgstr ""
+
+#: inc/post-types.php:84
+msgid "Testimonials"
+msgstr ""
+
+#: inc/post-types.php:85
+msgid "Testimonial"
+msgstr ""
+
+#: inc/post-types.php:86
+msgid "Add testimonial"
+msgstr ""
+
+#. translators: %s: search query
+#: index.php:10
+#, php-format
+msgid "Results for “%s”"
+msgstr ""
+
+#. translators: %s: search query
+#: index.php:10
+#: searchform.php:6
+msgid "Search"
+msgstr ""
+
+#: index.php:13
+#: index.php:14
+#: index.php:18
+msgid "Journal"
+msgstr ""
+
+#: index.php:15
+msgid "Tips, trends and behind-the-scenes from the Glitter team."
+msgstr ""
+
+#: index.php:36
+#: template-parts/testimonials.php:37
+msgid "Previous"
+msgstr ""
+
+#: index.php:37
+#: template-parts/testimonials.php:39
+msgid "Next"
+msgstr ""
+
+#: index.php:42
+msgid "Nothing here yet. Check back soon!"
+msgstr ""
+
+#: searchform.php:3
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:4
+msgid "Search…"
+msgstr ""
+
+#: single-case_study.php:15
+msgid "Platforms"
+msgstr ""
+
+#: single-case_study.php:20
+msgid "Case study"
+msgstr ""
+
+#: single-case_study.php:49
+msgid "See it live"
+msgstr ""
+
+#: single-case_study.php:68
+msgid "More projects"
+msgstr ""
+
+#: single-service.php:18
+msgid "What’s included"
+msgstr ""
+
+#: single-service.php:24
+msgid "Ask about this"
+msgstr ""
+
+#: single-service.php:38
+msgid "Recent *work*"
+msgstr ""
+
+#: single.php:21
+msgid "More posts"
+msgstr ""
+
+#. Template Name of the theme
+msgid "About (team)"
+msgstr ""
+
+#: template-about.php:12
+msgid "About us"
+msgstr ""
+
+#: template-about.php:28
+msgid "The team"
+msgstr ""
+
+#: template-about.php:29
+msgid "The people behind the *sparkle*"
+msgstr ""
+
+#: template-about.php:52
+msgid "Instagram"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Contact (project brief)"
+msgstr ""
+
+#: template-contact.php:24
+msgid "Prefer email?"
+msgstr ""
+
+#: template-contact.php:31
+msgid "Or slide into our DMs:"
+msgstr ""
+
+#: template-contact.php:39
+msgid "Glitter incoming!"
+msgstr ""
+
+#: template-contact.php:40
+msgid "Thanks for your brief. We’ll get back to you within two working days."
+msgstr ""
+
+#: template-contact.php:58
+msgid "Your name"
+msgstr ""
+
+#: template-contact.php:62
+msgid "Email"
+msgstr ""
+
+#: template-contact.php:69
+msgid "Brand / business"
+msgstr ""
+
+#: template-contact.php:73
+msgid "Website or @handle"
+msgstr ""
+
+#: template-contact.php:79
+msgid "What do you need?"
+msgstr ""
+
+#: template-contact.php:91
+msgid "Budget"
+msgstr ""
+
+#: template-contact.php:103
+msgid "Tell us about your brand and goals"
+msgstr ""
+
+#. translators: %s: privacy policy URL
+#: template-contact.php:115
+#, php-format
+msgid "I agree that my details are used to reply to this message, as described in the <a href=\"%s\">privacy policy</a>."
+msgstr ""
+
+#: template-contact.php:116
+msgid "I agree that my details are used to reply to this message."
+msgstr ""
+
+#: template-contact.php:124
+msgid "Send the brief"
+msgstr ""
+
+#: template-parts/clients.php:14
+msgid "Brands we’ve worked with"
+msgstr ""
+
+#: template-parts/cta.php:10
+msgid "Ready to get your *glitter* on?"
+msgstr ""
+
+#: template-parts/cta.php:12
+msgid "Tell us about your brand and we’ll come back with ideas, not a sales pitch."
+msgstr ""
+
+#: template-parts/marquee.php:7
+msgid "Strategy"
+msgstr ""
+
+#: template-parts/marquee.php:8
+msgid "Content creation"
+msgstr ""
+
+#: template-parts/marquee.php:9
+msgid "Reels & TikToks"
+msgstr ""
+
+#: template-parts/marquee.php:10
+msgid "Community"
+msgstr ""
+
+#: template-parts/marquee.php:11
+msgid "Paid ads"
+msgstr ""
+
+#: template-parts/marquee.php:12
+msgid "Influencers"
+msgstr ""
+
+#: template-parts/marquee.php:13
+msgid "Branding"
+msgstr ""
+
+#: template-parts/testimonials.php:14
+msgid "Kind words"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Lilac"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Hot pink"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Blush"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Sky"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Plum"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""

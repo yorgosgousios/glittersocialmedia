@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<ruleset name="Glitter">
+	<description>WordPress coding standards for the Glitter theme.</description>
+
+	<file>theme</file>
+	<exclude-pattern>theme/languages/*</exclude-pattern>
+	<file>local/mu-plugins</file>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="sp"/>
+
+	<config name="testVersion" value="8.1-"/>
+	<config name="minimum_wp_version" value="6.5"/>
+
+	<rule ref="WordPress">
+		<!-- Template files are named by the WP template hierarchy, not by class. -->
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<!-- Short array syntax is used throughout. -->
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax"/>
+		<!-- Inline-comment punctuation is noise for this codebase. -->
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
+		<exclude name="Squiz.Commenting.FileComment.Missing"/>
+		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
+		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+		<!-- Style preferences we don't follow. -->
+		<exclude name="WordPress.PHP.YodaConditions"/>
+		<exclude name="Universal.Operators.DisallowShortTernary"/>
+	</rule>
+
+	<!-- WP template hierarchy requires the underscore (taxonomy-{taxonomy}.php). -->
+	<rule ref="WordPress.Files.FileName.NotHyphenatedLowercase">
+		<exclude-pattern>theme/taxonomy-*.php</exclude-pattern>
+		<exclude-pattern>theme/archive-*.php</exclude-pattern>
+		<exclude-pattern>theme/single-*.php</exclude-pattern>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="glitter"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="glitter"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>

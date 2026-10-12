@@ -1,0 +1,99 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php }} (syntax + WordPress standards)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ["8.1", "8.3"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer:v2
+          coverage: none
+
+      - name: Install dev tools
+        run: composer install --no-interaction --no-progress
+
+      - name: Syntax check
+        run: find theme local scripts -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: PHPCS
+        run: vendor/bin/phpcs
+
+  frontend:
+    name: JS + CSS lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run lint
+
+  smoke:
+    name: Smoke test (WordPress in Docker)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          # Locally this network belongs to the shared Traefik proxy; CI only needs it to exist.
+          docker network create traefik_proxy
+
+      - name: Start containers
+        run: docker compose up -d --wait
+
+      - name: Install WordPress + theme
+        run: make install
+
+      - name: Seed placeholder content
+        run: make seed
+
+      - name: Smoke test
+        run: make smoke
+
+      - name: Container logs
+        if: failure()
+        run: docker compose logs
+
+  package:
+    name: Package theme
+    needs: [php, frontend, smoke]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build zip
+        run: |
+          mkdir -p dist
+          (cd theme && zip -qr ../dist/glitter-theme.zip . -x '.*')
+          unzip -l dist/glitter-theme.zip | tail -1
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: glitter-theme-${{ github.sha }}
+          path: dist/glitter-theme.zip
+          retention-days: 30

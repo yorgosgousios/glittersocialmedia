@@ -1,0 +1,32 @@
+/* Block editor: match front-end typography so edits look like the live site. */
+
+@font-face { font-family: "Display"; font-weight: 100 900; src: url("../fonts/fraunces-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: "Display"; font-weight: 100 900; src: url("../fonts/piazzolla-greek.woff2") format("woff2"); unicode-range: U+0370-03FF; }
+@font-face { font-family: "Body"; font-weight: 200 800; src: url("../fonts/manrope-latin.woff2") format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+20AC; }
+@font-face { font-family: "Body"; font-weight: 200 800; src: url("../fonts/manrope-greek.woff2") format("woff2"); unicode-range: U+0370-03FF; }
+
+body {
+	background: #f6edff;
+	color: #2b0f3a;
+	font-family: "Body", system-ui, sans-serif;
+	font-weight: 500;
+	line-height: 1.6;
+}
+
+h1, h2, h3, h4,
+.editor-post-title__input {
+	font-family: "Display", Georgia, serif;
+	font-weight: 800;
+	font-variation-settings: "SOFT" 100, "WONK" 1;
+	letter-spacing: -0.025em;
+	line-height: 1.05;
+}
+
+a { color: inherit; text-decoration-color: #e5186a; }
+
+blockquote {
+	padding: 1rem 1.2rem;
+	background: #ffd1e6;
+	border: 2px solid #2b0f3a;
+	border-radius: 16px;
+}

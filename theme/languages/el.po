@@ -1,0 +1,592 @@
+# Copyright (C) 2026 
+# This file is distributed under the same license as the Glitter theme.
+msgid ""
+msgstr ""
+"Project-Id-Version: Glitter 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/glitter\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-12T17:52:03+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: glitter\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Glitter"
+msgstr "Glitter"
+
+#. Description of the theme
+#: style.css
+msgid "Custom theme for Glitter Social Media."
+msgstr "Custom θέμα για το Glitter Social Media."
+
+#: 404.php:7
+msgid "This page lost its sparkle"
+msgstr "Αυτή η σελίδα έχασε τη λάμψη της"
+
+#: 404.php:7
+msgid "It doesn’t exist or it has moved."
+msgstr "Δεν υπάρχει ή έχει μετακινηθεί."
+
+#: 404.php:11
+msgid "Back home"
+msgstr "Πίσω στην αρχική"
+
+#: archive-case_study.php:8
+#: inc/post-types.php:37
+msgid "Work"
+msgstr "Δουλειές"
+
+#: archive-case_study.php:9
+msgid "Selected projects"
+msgstr "Επιλεγμένα projects"
+
+#: archive-case_study.php:10
+msgid "A few of the brands we’ve helped sparkle online."
+msgstr "Μερικά από τα brands που κάναμε να λάμψουν online."
+
+#: archive-case_study.php:27
+msgid "Case studies coming soon."
+msgstr "Τα case studies έρχονται σύντομα."
+
+#: archive-service.php:8
+#: inc/post-types.php:15
+msgid "Services"
+msgstr "Υπηρεσίες"
+
+#: archive-service.php:9
+#: front-page.php:60
+msgid "What we do"
+msgstr "Τι κάνουμε"
+
+#: archive-service.php:10
+msgid "Strategy, content and community for brands that want to stand out in the feed."
+msgstr "Στρατηγική, περιεχόμενο και community για brands που θέλουν να ξεχωρίσουν στο feed."
+
+#: archive-service.php:26
+msgid "Services coming soon."
+msgstr "Οι υπηρεσίες έρχονται σύντομα."
+
+#: footer.php:7
+msgid "Say hi"
+msgstr "Πες ένα γεια"
+
+#: footer.php:12
+#: inc/setup.php:33
+msgid "Footer"
+msgstr "Υποσέλιδο"
+
+#: footer.php:30
+msgid "Strategies that sparkle."
+msgstr "Στρατηγικές που λάμπουν."
+
+#: footer.php:47
+msgid "Back to top"
+msgstr "Επιστροφή στην κορυφή"
+
+#: front-page.php:14
+msgid "Social media agency"
+msgstr "Social media agency"
+
+#: front-page.php:16
+msgid "Social media strategies that *sparkle*"
+msgstr "Social media στρατηγικές που *λάμπουν*"
+
+#: front-page.php:23
+#: template-parts/cta.php:13
+msgid "Start a project"
+msgstr "Ξεκίνα ένα project"
+
+#: front-page.php:24
+msgid "See our work"
+msgstr "Δες τη δουλειά μας"
+
+#: front-page.php:43
+msgid "Hi, we’re Glitter"
+msgstr "Γεια, είμαστε η Glitter"
+
+#: front-page.php:46
+msgid "Meet the team"
+msgstr "Γνώρισε την ομάδα"
+
+#: front-page.php:61
+msgid "Everything your feed *needs*"
+msgstr "Ό,τι *χρειάζεται* το feed σου"
+
+#: front-page.php:62
+msgid "All services"
+msgstr "Όλες οι υπηρεσίες"
+
+#: front-page.php:84
+msgid "Selected work"
+msgstr "Επιλεγμένες δουλειές"
+
+#: front-page.php:85
+msgid "Brands we made *shine*"
+msgstr "Brands που κάναμε να *λάμψουν*"
+
+#: front-page.php:86
+#: inc/post-types.php:41
+#: single-service.php:39
+msgid "All projects"
+msgstr "Όλα τα projects"
+
+#: header.php:12
+msgid "Skip to content"
+msgstr "Μετάβαση στο περιεχόμενο"
+
+#: header.php:18
+#: inc/setup.php:32
+msgid "Primary"
+msgstr "Κύριο μενού"
+
+#: header.php:34
+#: template-contact.php:17
+#: template-parts/cta.php:9
+msgid "Let’s talk"
+msgstr "Ας μιλήσουμε"
+
+#: header.php:35
+msgid "Open menu"
+msgstr "Άνοιγμα μενού"
+
+#: header.php:45
+msgid "Close menu"
+msgstr "Κλείσιμο μενού"
+
+#: header.php:49
+msgid "Mobile"
+msgstr "Κινητό"
+
+#: inc/contact-form.php:16
+msgid "Up to €500 / month"
+msgstr "Έως €500 / μήνα"
+
+#: inc/contact-form.php:17
+msgid "€500 – €1,000 / month"
+msgstr "€500 – €1.000 / μήνα"
+
+#: inc/contact-form.php:18
+msgid "€1,000 – €2,500 / month"
+msgstr "€1.000 – €2.500 / μήνα"
+
+#: inc/contact-form.php:19
+msgid "€2,500+ / month"
+msgstr "€2.500+ / μήνα"
+
+#: inc/contact-form.php:20
+msgid "One-off project"
+msgstr "Μεμονωμένο project"
+
+#: inc/contact-form.php:21
+msgid "Not sure yet"
+msgstr "Δεν ξέρω ακόμα"
+
+#: inc/contact-form.php:28
+msgid "Not sure yet — help me choose"
+msgstr "Δεν ξέρω ακόμα — βοηθήστε με να διαλέξω"
+
+#: inc/contact-form.php:35
+msgid "Please fill in all required fields."
+msgstr "Συμπλήρωσε όλα τα υποχρεωτικά πεδία."
+
+#: inc/contact-form.php:36
+msgid "Please enter a valid email address."
+msgstr "Γράψε ένα έγκυρο email."
+
+#: inc/contact-form.php:37
+msgid "Too many messages from your connection. Please try again later or email us directly."
+msgstr "Πάρα πολλά μηνύματα από τη σύνδεσή σου. Δοκίμασε ξανά αργότερα ή στείλε μας email."
+
+#: inc/contact-form.php:38
+msgid "Your message could not be sent. Please try again or email us directly."
+msgstr "Το μήνυμά σου δεν στάλθηκε. Δοκίμασε ξανά ή στείλε μας email."
+
+#: inc/contact-form.php:39
+msgid "The form expired. Please try again."
+msgstr "Η φόρμα έληξε. Δοκίμασε ξανά."
+
+#: inc/customizer.php:11
+msgid "Contact email (also receives project briefs)"
+msgstr "Email επικοινωνίας (εδώ έρχονται και τα briefs)"
+
+#: inc/customizer.php:12
+msgid "Phone"
+msgstr "Τηλέφωνο"
+
+#: inc/customizer.php:13
+msgid "Address / city"
+msgstr "Διεύθυνση / πόλη"
+
+#: inc/customizer.php:14
+#: inc/meta-boxes.php:24
+msgid "Instagram URL"
+msgstr "Instagram URL"
+
+#: inc/customizer.php:15
+msgid "TikTok URL"
+msgstr "TikTok URL"
+
+#: inc/customizer.php:16
+msgid "LinkedIn URL"
+msgstr "LinkedIn URL"
+
+#: inc/customizer.php:17
+msgid "Facebook URL"
+msgstr "Facebook URL"
+
+#: inc/customizer.php:18
+msgid "Clients strip on Home (one name per line)"
+msgstr "Λίστα πελατών στην Αρχική (ένα όνομα ανά γραμμή)"
+
+#: inc/customizer.php:34
+msgid "Agency & social"
+msgstr "Agency & social"
+
+#: inc/i18n.php:67
+msgid "Language"
+msgstr "Γλώσσα"
+
+#: inc/meta-boxes.php:13
+msgid "What’s included (one per line)"
+msgstr "Τι περιλαμβάνει (ένα ανά γραμμή)"
+
+#: inc/meta-boxes.php:16
+#: single-case_study.php:14
+msgid "Client"
+msgstr "Πελάτης"
+
+#: inc/meta-boxes.php:17
+msgid "Platforms (e.g. Instagram, TikTok)"
+msgstr "Πλατφόρμες (π.χ. Instagram, TikTok)"
+
+#: inc/meta-boxes.php:18
+#: single-case_study.php:16
+msgid "Year"
+msgstr "Έτος"
+
+#: inc/meta-boxes.php:19
+msgid "Results, one per line as \"value | label\" (e.g. +240% | reach)"
+msgstr "Αποτελέσματα, ένα ανά γραμμή ως \"τιμή | περιγραφή\" (π.χ. +240% | reach)"
+
+#: inc/meta-boxes.php:20
+msgid "Link (Instagram profile, campaign…)"
+msgstr "Σύνδεσμος (προφίλ Instagram, καμπάνια…)"
+
+#: inc/meta-boxes.php:23
+msgid "Role"
+msgstr "Ρόλος"
+
+#: inc/meta-boxes.php:27
+msgid "Role / company"
+msgstr "Ρόλος / εταιρεία"
+
+#: inc/meta-boxes.php:41
+msgid "Details"
+msgstr "Στοιχεία"
+
+#: inc/post-types.php:16
+#: single-service.php:11
+msgid "Service"
+msgstr "Υπηρεσία"
+
+#: inc/post-types.php:17
+msgid "Add new service"
+msgstr "Νέα υπηρεσία"
+
+#: inc/post-types.php:18
+msgid "Edit service"
+msgstr "Επεξεργασία υπηρεσίας"
+
+#: inc/post-types.php:38
+msgid "Project"
+msgstr "Project"
+
+#: inc/post-types.php:39
+msgid "Add new project"
+msgstr "Νέο project"
+
+#: inc/post-types.php:40
+msgid "Edit project"
+msgstr "Επεξεργασία project"
+
+#: inc/post-types.php:69
+msgid "Team"
+msgstr "Ομάδα"
+
+#: inc/post-types.php:70
+msgid "Team member"
+msgstr "Μέλος ομάδας"
+
+#: inc/post-types.php:71
+msgid "Add team member"
+msgstr "Νέο μέλος"
+
+#: inc/post-types.php:72
+msgid "Photo"
+msgstr "Φωτογραφία"
+
+#: inc/post-types.php:84
+msgid "Testimonials"
+msgstr "Κριτικές"
+
+#: inc/post-types.php:85
+msgid "Testimonial"
+msgstr "Κριτική"
+
+#: inc/post-types.php:86
+msgid "Add testimonial"
+msgstr "Νέα κριτική"
+
+#. translators: %s: search query
+#: index.php:10
+#, php-format
+msgid "Results for “%s”"
+msgstr "Αποτελέσματα για «%s»"
+
+#. translators: %s: search query
+#: index.php:10
+#: searchform.php:6
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#: index.php:13
+#: index.php:14
+#: index.php:18
+msgid "Journal"
+msgstr "Journal"
+
+#: index.php:15
+msgid "Tips, trends and behind-the-scenes from the Glitter team."
+msgstr "Tips, trends και behind-the-scenes από την ομάδα της Glitter."
+
+#: index.php:36
+#: template-parts/testimonials.php:37
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: index.php:37
+#: template-parts/testimonials.php:39
+msgid "Next"
+msgstr "Επόμενο"
+
+#: index.php:42
+msgid "Nothing here yet. Check back soon!"
+msgstr "Τίποτα εδώ ακόμα. Ξαναπέρνα σύντομα!"
+
+#: searchform.php:3
+msgid "Search for:"
+msgstr "Αναζήτηση για:"
+
+#: searchform.php:4
+msgid "Search…"
+msgstr "Αναζήτηση…"
+
+#: single-case_study.php:15
+msgid "Platforms"
+msgstr "Πλατφόρμες"
+
+#: single-case_study.php:20
+msgid "Case study"
+msgstr "Case study"
+
+#: single-case_study.php:49
+msgid "See it live"
+msgstr "Δες το live"
+
+#: single-case_study.php:68
+msgid "More projects"
+msgstr "Περισσότερα projects"
+
+#: single-service.php:18
+msgid "What’s included"
+msgstr "Τι περιλαμβάνει"
+
+#: single-service.php:24
+msgid "Ask about this"
+msgstr "Ρώτα μας γι’ αυτό"
+
+#: single-service.php:38
+msgid "Recent *work*"
+msgstr "Πρόσφατη *δουλειά*"
+
+#: single.php:21
+msgid "More posts"
+msgstr "Περισσότερα άρθρα"
+
+#. Template Name of the theme
+msgid "About (team)"
+msgstr "Ποιοι είμαστε (ομάδα)"
+
+#: template-about.php:12
+msgid "About us"
+msgstr "Ποιοι είμαστε"
+
+#: template-about.php:28
+msgid "The team"
+msgstr "Η ομάδα"
+
+#: template-about.php:29
+msgid "The people behind the *sparkle*"
+msgstr "Οι άνθρωποι πίσω από τη *λάμψη*"
+
+#: template-about.php:52
+msgid "Instagram"
+msgstr "Instagram"
+
+#. Template Name of the theme
+msgid "Contact (project brief)"
+msgstr "Επικοινωνία (brief)"
+
+#: template-contact.php:24
+msgid "Prefer email?"
+msgstr "Προτιμάς email;"
+
+#: template-contact.php:31
+msgid "Or slide into our DMs:"
+msgstr "Ή στείλε μας DM:"
+
+#: template-contact.php:39
+msgid "Glitter incoming!"
+msgstr "Έρχεται glitter!"
+
+#: template-contact.php:40
+msgid "Thanks for your brief. We’ll get back to you within two working days."
+msgstr "Ευχαριστούμε για το brief! Θα σου απαντήσουμε μέσα σε δύο εργάσιμες."
+
+#: template-contact.php:58
+msgid "Your name"
+msgstr "Το όνομά σου"
+
+#: template-contact.php:62
+msgid "Email"
+msgstr "Email"
+
+#: template-contact.php:69
+msgid "Brand / business"
+msgstr "Brand / επιχείρηση"
+
+#: template-contact.php:73
+msgid "Website or @handle"
+msgstr "Website ή @handle"
+
+#: template-contact.php:79
+msgid "What do you need?"
+msgstr "Τι χρειάζεσαι;"
+
+#: template-contact.php:91
+msgid "Budget"
+msgstr "Budget"
+
+#: template-contact.php:103
+msgid "Tell us about your brand and goals"
+msgstr "Πες μας για το brand και τους στόχους σου"
+
+#. translators: %s: privacy policy URL
+#: template-contact.php:115
+#, php-format
+msgid "I agree that my details are used to reply to this message, as described in the <a href=\"%s\">privacy policy</a>."
+msgstr "Συμφωνώ να χρησιμοποιηθούν τα στοιχεία μου για την απάντηση σε αυτό το μήνυμα, όπως περιγράφεται στην <a href=\"%s\">πολιτική απορρήτου</a>."
+
+#: template-contact.php:116
+msgid "I agree that my details are used to reply to this message."
+msgstr "Συμφωνώ να χρησιμοποιηθούν τα στοιχεία μου για την απάντηση σε αυτό το μήνυμα."
+
+#: template-contact.php:124
+msgid "Send the brief"
+msgstr "Στείλε το brief"
+
+#: template-parts/clients.php:14
+msgid "Brands we’ve worked with"
+msgstr "Brands που εμπιστεύτηκαν τη Glitter"
+
+#: template-parts/cta.php:10
+msgid "Ready to get your *glitter* on?"
+msgstr "Έτοιμος/η για λίγο *glitter*;"
+
+#: template-parts/cta.php:12
+msgid "Tell us about your brand and we’ll come back with ideas, not a sales pitch."
+msgstr "Πες μας για το brand σου και θα επιστρέψουμε με ιδέες, όχι με sales pitch."
+
+#: template-parts/marquee.php:7
+msgid "Strategy"
+msgstr "Στρατηγική"
+
+#: template-parts/marquee.php:8
+msgid "Content creation"
+msgstr "Content creation"
+
+#: template-parts/marquee.php:9
+msgid "Reels & TikToks"
+msgstr "Reels & TikToks"
+
+#: template-parts/marquee.php:10
+msgid "Community"
+msgstr "Community"
+
+#: template-parts/marquee.php:11
+msgid "Paid ads"
+msgstr "Διαφημίσεις"
+
+#: template-parts/marquee.php:12
+msgid "Influencers"
+msgstr "Influencers"
+
+#: template-parts/marquee.php:13
+msgid "Branding"
+msgstr "Branding"
+
+#: template-parts/testimonials.php:14
+msgid "Kind words"
+msgstr "Καλά λόγια"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Lilac"
+msgstr "Λιλά"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Hot pink"
+msgstr "Φούξια"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Blush"
+msgstr "Ροζ"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Sky"
+msgstr "Γαλάζιο"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Plum"
+msgstr "Μωβ"
+
+#: theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr "Λευκό"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Μικρό"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Μεσαίο"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Μεγάλο"

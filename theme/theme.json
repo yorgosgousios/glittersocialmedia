@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": false,
+		"color": {
+			"custom": false,
+			"customGradient": false,
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"palette": [
+				{ "slug": "lilac", "name": "Lilac", "color": "#ecdafc" },
+				{ "slug": "pink", "name": "Hot pink", "color": "#e5186a" },
+				{ "slug": "blush", "name": "Blush", "color": "#ffd1e6" },
+				{ "slug": "sky", "name": "Sky", "color": "#b7defa" },
+				{ "slug": "ink", "name": "Plum", "color": "#2b0f3a" },
+				{ "slug": "white", "name": "White", "color": "#ffffff" }
+			]
+		},
+		"typography": {
+			"customFontSize": false,
+			"dropCap": false,
+			"defaultFontSizes": false,
+			"fontSizes": [
+				{ "slug": "small", "name": "Small", "size": "0.9rem" },
+				{ "slug": "medium", "name": "Medium", "size": "1.0625rem" },
+				{ "slug": "large", "name": "Large", "size": "clamp(1.6rem, 1.1rem + 2vw, 2.8rem)" }
+			]
+		},
+		"layout": { "contentSize": "780px", "wideSize": "1200px" },
+		"spacing": { "padding": false, "margin": false }
+	}
+}

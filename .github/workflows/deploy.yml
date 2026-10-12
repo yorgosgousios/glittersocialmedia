@@ -1,0 +1,59 @@
+name: Deploy
+
+# Deploys the theme folder to the Papaki hosting over FTPS after CI passes on main.
+# Disabled until the repo variable DEPLOY_ENABLED is set to "true" — so pushes never
+# touch the live "under construction" page until WordPress is installed on the host.
+# Setup (repo → Settings → Secrets and variables → Actions):
+#   secrets:   FTP_HOST, FTP_USERNAME, FTP_PASSWORD (already exist from the old Vite deploy),
+#              FTP_THEME_DIR  e.g. /httpdocs/wp-content/themes/glitter/   (new — note the trailing slash)
+#   variables: DEPLOY_ENABLED=true, PRODUCTION_URL=https://glittersocialmedia.gr, FTP_PROTOCOL (optional: ftps|ftp)
+# The old FTP_TARGET_DIR secret (site root) is intentionally NOT used.
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      vars.DEPLOY_ENABLED == 'true' &&
+      (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ vars.PRODUCTION_URL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Upload theme (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ vars.FTP_PROTOCOL || 'ftps' }}  # set FTP_PROTOCOL=ftp if the host has no FTPS
+          local-dir: theme/
+          server-dir: ${{ secrets.FTP_THEME_DIR }}
+          exclude: |
+            **/.*
+            **/.*/**
+          timeout: 120000
+
+      - name: Health check
+        if: vars.PRODUCTION_URL != ''
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 5 "${{ vars.PRODUCTION_URL }}")
+          echo "Homepage returned $code"
+          test "$code" = 200
