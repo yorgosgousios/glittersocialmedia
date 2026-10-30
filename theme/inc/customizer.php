@@ -8,14 +8,15 @@ defined( 'ABSPATH' ) || exit;
 /** Fields under Appearance → Customize → Agency & social: id => [label, type, default]. */
 function glitter_contact_fields(): array {
 	return [
-		'glitter_email'     => [ __( 'Contact email (also receives project briefs)', 'glitter' ), 'email', 'hey@glittersocialmedia.gr' ],
-		'glitter_phone'     => [ __( 'Phone', 'glitter' ), 'text', '' ],
-		'glitter_address'   => [ __( 'Address / city', 'glitter' ), 'textarea', '' ],
-		'glitter_instagram' => [ __( 'Instagram URL', 'glitter' ), 'url', 'https://www.instagram.com/glittersocialmedia/' ],
-		'glitter_tiktok'    => [ __( 'TikTok URL', 'glitter' ), 'url', '' ],
-		'glitter_linkedin'  => [ __( 'LinkedIn URL', 'glitter' ), 'url', '' ],
-		'glitter_facebook'  => [ __( 'Facebook URL', 'glitter' ), 'url', '' ],
-		'glitter_clients'   => [ __( 'Clients strip on Home (one name per line)', 'glitter' ), 'textarea', "Client one\nClient two\nClient three\nClient four\nClient five\nClient six" ],
+		'glitter_email'       => [ __( 'Contact email (also receives project briefs)', 'glitter' ), 'email', 'hey@glittersocialmedia.gr' ],
+		'glitter_phone'       => [ __( 'Phone', 'glitter' ), 'text', '' ],
+		'glitter_address'     => [ __( 'Address / city', 'glitter' ), 'textarea', '' ],
+		'glitter_instagram'   => [ __( 'Instagram URL', 'glitter' ), 'url', 'https://www.instagram.com/glittersocialmedia/' ],
+		'glitter_tiktok'      => [ __( 'TikTok URL', 'glitter' ), 'url', '' ],
+		'glitter_linkedin'    => [ __( 'LinkedIn URL', 'glitter' ), 'url', '' ],
+		'glitter_facebook'    => [ __( 'Facebook URL', 'glitter' ), 'url', '' ],
+		'glitter_clients'     => [ __( 'Clients strip on Home (one name per line)', 'glitter' ), 'textarea', "Client one\nClient two\nClient three\nClient four\nClient five\nClient six" ],
+		'glitter_coming_soon' => [ __( 'Coming soon mode: only logged-in users see the site', 'glitter' ), 'checkbox', '' ],
 	];
 }
 
@@ -41,6 +42,7 @@ add_action(
 			'url'      => 'esc_url_raw',
 			'text'     => 'sanitize_text_field',
 			'textarea' => 'sanitize_textarea_field',
+			'checkbox' => 'wp_validate_boolean',
 		];
 
 		foreach ( glitter_contact_fields() as $id => [ $label, $type, $default ] ) {

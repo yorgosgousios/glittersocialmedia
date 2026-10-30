@@ -56,8 +56,8 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
   4. After propagation, issue Let's Encrypt in Plesk (SSL/TLS) and enable the
      HTTP→HTTPS redirect. (It can't be issued earlier: Let's Encrypt validates
      over the public DNS, which still points to WordPress.com.)
-  5. Remove the /etc/hosts preview line (section 5) and detach/cancel the
-     WordPress.com plan once nothing there is needed.
+  5. Remove the /etc/hosts preview line and the preview subdomain (section 5)
+     and detach/cancel the WordPress.com plan once nothing there is needed.
 
 
 =====================================================================
@@ -145,6 +145,42 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
   - Check what the public sees: dig glittersocialmedia.gr @8.8.8.8, or open the
     site on a phone over mobile data.
   - Remove the hosts line after launch.
+
+  Client preview: https://preview.glittersocialmedia.gr (added 2026-10-30)
+  - Plesk subdomain "preview" with document root /httpdocs: the SAME WordPress
+    install and database as the real domain, not a copy. Edits show on both.
+  - wp-config.php (server only, not in git), above "stop editing":
+      define( 'PLL_CACHE_HOME_URL', false );   // always
+      if HTTP_HOST is preview.glittersocialmedia.gr:
+        WP_HOME / WP_SITEURL = https://preview.glittersocialmedia.gr
+        header X-Robots-Tag: noindex, nofollow
+    Without PLL_CACHE_HOME_URL, Polylang caches each language's home URL
+    from whichever host built the cache, so /en/ and the menus redirected
+    to the main domain.
+  - DNS: A record preview → 213.158.90.146 in the WordPress.com DNS panel
+    (the account that owns the domain, not "kyritsi"). Leaves the main
+    site and Google MX untouched.
+  - SSL: Let's Encrypt for the subdomain in Plesk, after that A record resolves.
+  - Limit: images inserted into post content are stored with absolute
+    https://glittersocialmedia.gr/... URLs, so on the preview they load from
+    WordPress.com (broken). Featured images and theme assets are fine.
+  - Remove at launch: the A record, the Plesk subdomain (Remove website,
+    NOT the files — it shares httpdocs), and the preview `if` block in
+    wp-config.php. PLL_CACHE_HOME_URL can stay.
+
+
+  Keeping the site private on the real domain (2026-10-30)
+  - WP Toolkit "Password protection" (HTTP basic auth) is ON for
+    glittersocialmedia.gr. Credentials: the owner's password file.
+    It may block Let's Encrypt validation; switch it off while issuing.
+  - Theme "Coming soon mode" (Appearance → Customize → Agency & social):
+    logged-out visitors get a branded holding page (HTTP 503, Retry-After,
+    noindex) in EL/EN with a "Log in" link; logged-in users see the real
+    site. wp-admin, wp-login and the brief form are unaffected. Code:
+    theme/inc/coming-soon.php + theme/template-coming-soon.php.
+    Client access: WP user with the Subscriber role.
+  - Plan: once the theme with coming-soon is deployed, tick the box, check
+    it, then switch Password protection off. At launch: untick the box.
 
 
 =====================================================================
@@ -238,6 +274,14 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
       testimonials, About text, privacy policy (EL + EN)
   [ ] Delete httpdocs/dist (old Vite build) in Plesk File Manager
   [ ] Delete the unused FTP_TARGET_DIR secret
+  [x] DNS zone in Plesk: Google MX, SPF (Google + Papaki IP), DMARC;
+      Plesk mail "Disabled for incoming mail" (2026-10-30)
+  [x] Nameservers at Papaki → ns172/ns272.papaki.gr (2026-10-30; the domain
+      is registered at Papaki, account kyritsi.iliana@gmail.com, old panel
+      www2.papaki.com/cp2). Domain expires 2026-12-02, hosting 2026-12-10.
+  [ ] Remove the preview subdomain (unprotected, served by Papaki DNS now)
+      and the preview `if` block in wp-config.php
+  [ ] Deploy coming-soon theme, tick it, switch WP Toolkit protection off
   [ ] DNS cut-over (section 2), Let's Encrypt + HTTPS redirect,
       set PRODUCTION_URL, remove /etc/hosts line
   [ ] After launch: Google Search Console, sitemap, backups schedule in

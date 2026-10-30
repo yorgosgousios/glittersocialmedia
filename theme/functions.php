@@ -16,6 +16,7 @@ require GLITTER_DIR . '/inc/post-types.php';
 require GLITTER_DIR . '/inc/meta-boxes.php';
 require GLITTER_DIR . '/inc/customizer.php';
 require GLITTER_DIR . '/inc/contact-form.php';
+require GLITTER_DIR . '/inc/coming-soon.php';
 require GLITTER_DIR . '/inc/template-tags.php';
 require GLITTER_DIR . '/inc/site-setup.php';
 require GLITTER_DIR . '/inc/admin-setup.php';

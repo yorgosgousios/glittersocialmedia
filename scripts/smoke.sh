@@ -25,6 +25,14 @@ code=$(fetch /this-page-does-not-exist/)
 echo "$code /this-page-does-not-exist/ (expect 404)"
 [ "$code" = 404 ] || fail=1
 
+docker compose run --rm -T wpcli wp theme mod set glitter_coming_soon 1 >/dev/null
+for path in / /en/; do
+  code=$(fetch "$path")
+  echo "$code $path (coming soon, expect 503)"
+  [ "$code" = 503 ] || fail=1
+done
+docker compose run --rm -T wpcli wp theme mod remove glitter_coming_soon >/dev/null
+
 log=$(docker compose exec -T wordpress sh -c 'cat wp-content/debug.log 2>/dev/null || true')
 if [ -n "$log" ]; then
   echo "PHP debug.log is not empty:"

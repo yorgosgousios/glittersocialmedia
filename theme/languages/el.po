@@ -627,3 +627,19 @@ msgstr "Μεσαίο"
 msgctxt "Font size name"
 msgid "Large"
 msgstr "Μεγάλο"
+
+#: inc/customizer.php:20
+msgid "Coming soon mode: only logged-in users see the site"
+msgstr "Λειτουργία «Έρχεται σύντομα»: τον ιστότοπο βλέπουν μόνο συνδεδεμένοι χρήστες"
+
+#: template-coming-soon.php:23
+msgid "Something *sparkly* is coming soon"
+msgstr "Κάτι *λαμπερό* έρχεται σύντομα"
+
+#: template-coming-soon.php:26
+msgid "Our new website is almost ready. Until then, say hi:"
+msgstr "Η νέα μας ιστοσελίδα είναι σχεδόν έτοιμη. Μέχρι τότε, πες μας ένα γεια:"
+
+#: template-coming-soon.php:31
+msgid "Log in"
+msgstr "Σύνδεση"
