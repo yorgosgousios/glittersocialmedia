@@ -113,7 +113,7 @@ function glitter_logo_mark(): string {
 	if ( $svg ) {
 		return '<span class="logo-svg" role="img" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '">' . $svg . '</span>';
 	}
-	return '<span class="logo-placeholder">' . glitter_sticker( 'disco', 'logo-placeholder__ball' ) . '<span>glitter</span></span>';
+	return '<span class="logo-placeholder">' . glitter_sticker( 'disco', 'logo-placeholder__ball' ) . '<span>Glitter Social Media</span></span>';
 }
 
 /** Linked brand mark for header/footer. */
