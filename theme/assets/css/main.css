@@ -439,6 +439,12 @@ p { margin: 0 0 1.1em; }
 @keyframes twinkle { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(0.5); opacity: 0.4; } }
 @keyframes disco-spin { to { transform: translateX(-108px); } }
 
+/* Coming soon (template-coming-soon.php) ------------------------------------ */
+
+.coming-soon__main { min-height: 100vh; min-height: 100svh; display: grid; place-content: center; justify-items: center; gap: 1.5rem; padding: var(--gutter); overflow: hidden; text-align: center; }
+.coming-soon__main .hero__art { width: min(72vw, 420px); }
+.coming-soon__text { margin: 0; max-width: 36ch; font-size: var(--fs-lg); color: var(--c-muted); }
+
 /* Marquee ------------------------------------------------------------------ */
 
 .marquee { overflow: hidden; padding-block: 1.3rem; border-block: 1px solid var(--c-line); }
