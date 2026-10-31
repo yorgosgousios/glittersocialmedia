@@ -2,13 +2,13 @@ GLITTER SOCIAL MEDIA — INFRASTRUCTURE & TECHNICAL DECISIONS
 ==========================================================
 Website for Glitter Social Media (glittersocialmedia.gr). This explains what runs
 where, how code gets to production, and why each decision was made.
-Last updated: 2026-10-12
+Last updated: 2026-10-31
 
 Repo:     git@github.com:yorgosgousios/glittersocialmedia.git (private)
 Local:    ~/Desktop/Personal/glitter-social-media → https://glitter.local.dev
 Server:   Papaki shared hosting, Plesk, linux72.papaki.gr (IP 213.158.90.146)
-Status:   WordPress + theme installed and working on Papaki. NOT public yet:
-          the domain's DNS still points to an old WordPress.com site (see 2).
+Status:   Served from Papaki since 2026-10-30 (DNS + HTTPS live), but private:
+          "Coming soon mode" shows a holding page to logged-out visitors (5).
 
 
 =====================================================================
@@ -18,8 +18,8 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
   developer laptop ──git push──▶ GitHub ──CI (lint + Docker smoke)──▶ Deploy
                                                                        │ FTPS (lftp)
                                                                        ▼
-  visitors ──DNS──▶ (today: WordPress.com)   Papaki / Plesk: WordPress + Polylang
-                    (after launch: Papaki)   + "glitter" theme in wp-content/themes/glitter
+  visitors ──DNS (Papaki)──HTTPS──▶  Papaki / Plesk: WordPress + Polylang
+                                     + "glitter" theme in wp-content/themes/glitter
 
   Only the THEME is version-controlled and deployed. WordPress core, plugins
   (Polylang, later WP Mail SMTP), uploads and the database live on the server
@@ -31,33 +31,35 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
 
 
 =====================================================================
-2. DOMAIN, DNS AND EMAIL — CURRENT STATE (important before launch)
+2. DOMAIN, DNS AND EMAIL
 =====================================================================
 
-  Nameservers: ns1/ns2/ns3.wordpress.com  → DNS is managed at WordPress.com
-  A records:   192.0.78.172, 192.0.78.217 → an old WordPress.com site
-               ("Portfollio of a creative content creator…", noindex)
-  MX:          Google Workspace (aspmx.l.google.com + alt1–alt4)
-               → hey@glittersocialmedia.gr is a Google Workspace mailbox
-  SPF (TXT):   v=spf1 include:_spf.wpcloud.com ~all
+  Registrar:   Papaki, account kyritsi.iliana@gmail.com. The domain is in the
+               OLD control panel (www2.papaki.com/cp2 → Domains), not the new
+               one. Expires 2026-12-02; auto-renew by card on 2026-11-25
+               (2 years). Hosting expires 2026-12-10.
+  Nameservers: ns172.papaki.gr, ns272.papaki.gr → the Plesk DNS zone is live.
+               (Until 2026-10-30: ns1-3.wordpress.com, an old WordPress.com
+               site. Switched 2026-10-30; the .gr registry took ~5 hours and
+               a Papaki ticket.)
+  A / www:     213.158.90.146 (www is a CNAME to the apex)
+  MX:          Google Workspace (aspmx.l.google.com 1, alt1/alt2 5,
+               alt3/alt4 10) → hey@glittersocialmedia.gr is a Google mailbox
+  SPF (TXT):   v=spf1 include:_spf.google.com ip4:213.158.90.146 ~all
+               (Papaki IP because WordPress still sends via the server)
+  DMARC:       _dmarc  v=DMARC1; p=none;
+  Plesk mail:  "Disabled for incoming mail" — otherwise the server treats
+               hey@ as a local mailbox and brief emails never reach Google.
+               The old Papaki MX (mail.glittersocialmedia.gr) was removed.
+  HTTPS:       Let's Encrypt (glittersocialmedia.gr + *.glittersocialmedia.gr),
+               issued 2026-10-31, auto-renewed by Plesk. Permanent 301
+               HTTP→HTTPS and www→apex.
 
-  Consequences:
-  - Visitors and search engines still get the WordPress.com site.
-  - Email does NOT run on Papaki/Plesk. Moving DNS must preserve the Google MX
-    records or email breaks.
+  Gotcha: Plesk holds DNS edits until "Update" is clicked at the top of the
+  records list. Check with: dig MX glittersocialmedia.gr @ns172.papaki.gr
 
-  Launch plan (DNS cut-over):
-  1. Copy every record from the WordPress.com DNS panel into Plesk DNS:
-     the 5 Google MX records, Google DKIM (google._domainkey) and any site
-     verification TXT records.
-  2. SPF: change to include Google (and Papaki if the site sends mail from the
-     server), e.g. "v=spf1 include:_spf.google.com ~all" (+ Papaki if needed).
-  3. At the registrar, switch nameservers to Papaki's.
-  4. After propagation, issue Let's Encrypt in Plesk (SSL/TLS) and enable the
-     HTTP→HTTPS redirect. (It can't be issued earlier: Let's Encrypt validates
-     over the public DNS, which still points to WordPress.com.)
-  5. Remove the /etc/hosts preview line and the preview subdomain (section 5)
-     and detach/cancel the WordPress.com plan once nothing there is needed.
+  WordPress.com: the old site/plan still exists but serves nothing for this
+  domain. Disconnect the domain there and cancel the plan when convenient.
 
 
 =====================================================================
@@ -79,7 +81,7 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
   - WP Toolkit maintenance mode: turned OFF (it hid the site from everyone,
     including admins; the domain isn't public yet anyway).
   - nginx caching: OFF (default). Fine for now.
-  - Left as is: "Search engine indexing" ON (irrelevant until DNS moves).
+  - Left as is: "Search engine indexing" ON (coming soon mode sends noindex).
 
   Leftover to remove manually: httpdocs/dist (old Vite build). Not served any
   more; deletion was blocked from automation, delete it in Plesk File Manager.
@@ -105,14 +107,14 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
   - Optional health check when PRODUCTION_URL is set.
 
   GitHub settings (repo → Settings → Secrets and variables → Actions):
-    secrets   FTP_HOST       = linux72.papaki.gr   (server name — NOT the domain,
-                                                     which points to WordPress.com)
+    secrets   FTP_HOST       = linux72.papaki.gr   (server name; the cert is
+                                                     *.papaki.gr, so not the domain)
               FTP_USERNAME / FTP_PASSWORD           (Plesk FTP user)
               FTP_THEME_DIR  = /httpdocs/wp-content/themes/glitter/
               FTP_TARGET_DIR (old Vite deploy; unused, can be deleted)
     variables DEPLOY_ENABLED = true
-              PRODUCTION_URL — leave EMPTY until DNS points to Papaki
-                               (the health check would hit WordPress.com)
+              PRODUCTION_URL — leave EMPTY until launch: the health
+                               check expects 200, coming soon mode returns 503
               FTP_PROTOCOL   — optional, "ftp" disables TLS (not recommended)
 
   Why FTPS with lftp (and not the FTP-Deploy-Action):
@@ -131,56 +133,37 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
 
 
 =====================================================================
-5. PREVIEWING THE PAPAKI SITE BEFORE LAUNCH
+5. KEEPING THE SITE PRIVATE UNTIL LAUNCH
 =====================================================================
 
-  Because DNS still points to WordPress.com, the developer's machine overrides
-  it locally:
-      /etc/hosts:  213.158.90.146 glittersocialmedia.gr www.glittersocialmedia.gr
-  - Only this computer (all browsers, incognito included) sees the new site.
-  - Chrome refused the self-signed certificate because WordPress.com had sent
-    HSTS for the domain; fixed by deleting the domain's HSTS policy at
-    chrome://net-internals/#hsts. The warning disappears for good once Let's
-    Encrypt is issued at launch.
-  - Check what the public sees: dig glittersocialmedia.gr @8.8.8.8, or open the
-    site on a phone over mobile data.
-  - Remove the hosts line after launch.
+  Theme "Coming soon mode" (Appearance → Customize → Agency & social), ON:
+  - Logged-out visitors get a minimal holding page: disco ball, one line with
+    hey@ and a "Log in" button (EL/EN). HTTP 503 + Retry-After + noindex, so
+    search engines treat it as temporary.
+  - Logged-in users see the real site; wp-admin, wp-login and the brief form
+    are unaffected. Code: theme/inc/coming-soon.php +
+    theme/template-coming-soon.php; smoke test checks the 503.
+  - Client access: a WP user with the Subscriber role.
+  - Not covered: the REST API (/wp-json/...) still returns page/post text.
+  - At launch: untick the box.
 
-  Client preview: https://preview.glittersocialmedia.gr (added 2026-10-30)
-  - Plesk subdomain "preview" with document root /httpdocs: the SAME WordPress
-    install and database as the real domain, not a copy. Edits show on both.
-  - wp-config.php (server only, not in git), above "stop editing":
-      define( 'PLL_CACHE_HOME_URL', false );   // always
-      if HTTP_HOST is preview.glittersocialmedia.gr:
-        WP_HOME / WP_SITEURL = https://preview.glittersocialmedia.gr
-        header X-Robots-Tag: noindex, nofollow
-    Without PLL_CACHE_HOME_URL, Polylang caches each language's home URL
-    from whichever host built the cache, so /en/ and the menus redirected
-    to the main domain.
-  - DNS: A record preview → 213.158.90.146 in the WordPress.com DNS panel
-    (the account that owns the domain, not "kyritsi"). Leaves the main
-    site and Google MX untouched.
-  - SSL: Let's Encrypt for the subdomain in Plesk, after that A record resolves.
-  - Limit: images inserted into post content are stored with absolute
-    https://glittersocialmedia.gr/... URLs, so on the preview they load from
-    WordPress.com (broken). Featured images and theme assets are fine.
-  - Remove at launch: the A record, the Plesk subdomain (Remove website,
-    NOT the files — it shares httpdocs), and the preview `if` block in
-    wp-config.php. PLL_CACHE_HOME_URL can stay.
-
-
-  Keeping the site private on the real domain (2026-10-30)
-  - WP Toolkit "Password protection" (HTTP basic auth) is ON for
-    glittersocialmedia.gr. Credentials: the owner's password file.
-    It may block Let's Encrypt validation; switch it off while issuing.
-  - Theme "Coming soon mode" (Appearance → Customize → Agency & social):
-    logged-out visitors get a branded holding page (HTTP 503, Retry-After,
-    noindex) in EL/EN with a "Log in" link; logged-in users see the real
-    site. wp-admin, wp-login and the brief form are unaffected. Code:
-    theme/inc/coming-soon.php + theme/template-coming-soon.php.
-    Client access: WP user with the Subscriber role.
-  - Plan: once the theme with coming-soon is deployed, tick the box, check
-    it, then switch Password protection off. At launch: untick the box.
+  History (2026-10-30), kept for reference:
+  - Before the DNS move, this laptop previewed Papaki via /etc/hosts
+    (213.158.90.146 glittersocialmedia.gr www.glittersocialmedia.gr).
+    Remove that line now: sudo sed -i '/glittersocialmedia/d' /etc/hosts
+  - A "preview.glittersocialmedia.gr" Plesk subdomain (document root =
+    httpdocs, same install) was used briefly, then removed. To remove it
+    safely its document root was first moved to an empty folder, otherwise
+    removing the subdomain could delete httpdocs. Removing it confused
+    WP Toolkit (BROKEN instance at /preview-off); fixed with Detach (NOT
+    Remove — that deletes files and DB) + Scan.
+  - wp-config.php (server only) still has, above "stop editing":
+      define( 'PLL_CACHE_HOME_URL', false );   — keep: Polylang otherwise
+        caches each language's home URL from whichever host built the cache
+      an `if` block for HTTP_HOST preview.glittersocialmedia.gr — dead code,
+        delete it.
+  - WP Toolkit "Password protection" (basic auth) was used for a few hours,
+    now OFF; coming soon mode replaced it.
 
 
 =====================================================================
@@ -268,21 +251,22 @@ Status:   WordPress + theme installed and working on Papaki. NOT public yet:
 10. OPEN ITEMS / NEXT STEPS
 =====================================================================
 
-  [ ] Push the lftp deploy change and confirm the Deploy workflow is green
+  [x] lftp deploy workflow green
+  [x] DNS zone in Plesk (Google MX, SPF, DMARC), Plesk incoming mail off,
+      nameservers → Papaki, Let's Encrypt + HTTPS redirect (2026-10-30/31)
+  [x] Coming soon mode deployed and ON; WP Toolkit protection OFF
+  [x] Preview subdomain removed, WP Toolkit instance re-detected
+  [ ] Remove the /etc/hosts line on the developer laptop
+  [ ] Delete the preview `if` block in wp-config.php (section 5)
   [ ] WP Mail SMTP → Google Workspace (hey@), send a test brief
+  [ ] Client WP user (Subscriber)
+  [ ] WP Toolkit: "Apply critical security measures"
   [ ] Real content: logo (SVG/PNG), services, case studies + results, team,
       testimonials, About text, privacy policy (EL + EN)
   [ ] Delete httpdocs/dist (old Vite build) in Plesk File Manager
   [ ] Delete the unused FTP_TARGET_DIR secret
-  [x] DNS zone in Plesk: Google MX, SPF (Google + Papaki IP), DMARC;
-      Plesk mail "Disabled for incoming mail" (2026-10-30)
-  [x] Nameservers at Papaki → ns172/ns272.papaki.gr (2026-10-30; the domain
-      is registered at Papaki, account kyritsi.iliana@gmail.com, old panel
-      www2.papaki.com/cp2). Domain expires 2026-12-02, hosting 2026-12-10.
-  [ ] Remove the preview subdomain (unprotected, served by Papaki DNS now)
-      and the preview `if` block in wp-config.php
-  [ ] Deploy coming-soon theme, tick it, switch WP Toolkit protection off
-  [ ] DNS cut-over (section 2), Let's Encrypt + HTTPS redirect,
-      set PRODUCTION_URL, remove /etc/hosts line
+  [ ] WordPress.com: disconnect the domain, cancel the old plan
+  [ ] LAUNCH: untick Coming soon mode, then set repo variable
+      PRODUCTION_URL=https://glittersocialmedia.gr (deploy health check)
   [ ] After launch: Google Search Console, sitemap, backups schedule in
       WP Toolkit, consider nginx caching
